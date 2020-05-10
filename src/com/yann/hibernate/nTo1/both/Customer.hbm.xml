@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2020???4???27??? ??????12:53:17 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping
+	package="com.yann.hibernate.nTo1.both">
+	<class name="Customer" table="CUSTOMERS">
+		<id name="customerId" type="java.lang.Integer">
+			<column name="CUSTOMER_ID" />
+			<generator class="native" />
+		</id>
+		<property name="customerName" type="java.lang.String">
+			<column name="CUSTOMER_NAME" />
+		</property>
+		<!-- 1ToMany -->
+		<!-- inverse = true, 使1的一端放弃维护关联关系. 指定多的一端维护 -->
+		<!-- cascade: 设定级联操作 不推荐使用 -->
+		<!-- order-by: 查询时对集合中元素排序 -->
+		<!-- batch-size:指定每次sql语句初始化的个数,减少sql查询次数 -->
+		<!-- lazy: true 懒加载 默认true-->
+		<!-- fetch: 默认select
+		subselect:通过子查询方式来初始化所有set的集合(此时lazy仍有效, batch失效)
+		join: 决定初始化的时机
+		 -->
+		<set name="orders" table="ORDERS" inverse="true" batch-size="2" lazy="true" fetch="select">
+			<key column="CUSTOMER_ID"></key>
+			<one-to-many class="Order" />
+		</set>
+	</class>
+</hibernate-mapping>

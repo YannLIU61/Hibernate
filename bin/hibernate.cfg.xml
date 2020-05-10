@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- 配置数据库 -->
+		<property name="connection.username">yann</property>
+		<property name="connection.password">test1234</property>
+		<property name="connection.driverclass">com.mysql.cj.jdbc.Driver</property>
+		<property name="connection.jdbcurl">jdbc:mysql://localhost:8889/hibernate?serverTimezone=UTC</property>
+
+		<!-- 配置 hibernate 基本信息 -->
+		<!-- hibernate 说使用的数据库方言 -->
+		<property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+
+		<!-- 执行操作时是否打印sql -->
+		<property name="show_sql">true</property>
+
+		<!-- 是否对sql语句格式化 -->
+		<property name="format_sql">true</property>
+
+		<!-- 自动生成数据表的策略 -->
+		<property name="hbm2ddl.auto">update</property>
+		
+		<!--  -->
+		<mapping resource="com/yann/hibernate/helloworld/News.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>
