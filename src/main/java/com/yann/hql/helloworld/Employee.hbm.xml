@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2020???5???10??? ??????3:06:10 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+	<class name="com.yann.hql.helloworld.Employee" table="EMPLOYEE">
+		<id name="em_id" type="java.lang.Integer">
+			<column name="EM_ID" />
+			<generator class="native" />
+		</id>
+		<property name="em_name" type="java.lang.String">
+			<column name="EM_NAME" />
+		</property>
+		<property name="salary" type="int">
+			<column name="SALARY" />
+		</property>
+		<many-to-one name="departement"
+			class="com.yann.hql.helloworld.Departement" column="DEPT_ID">
+
+		</many-to-one>
+	</class>
+</hibernate-mapping>
