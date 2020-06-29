@@ -7,6 +7,14 @@
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>com.yan.helloworld.Customer</class>
+		<class>com.yan.helloworld.Order</class>
+		<class>com.yan.helloworld.Manager</class>
+		<class>com.yan.helloworld.Department</class>
+		<class>com.yan.helloworld.Item</class>
+		<class>com.yan.helloworld.Catecory</class>
+
+		<!--二级缓存策略 -->
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
 		<properties>
 			<property name="javax.persistence.jdbc.user" value="yann" />
 			<property name="javax.persistence.jdbc.password"
@@ -17,9 +25,17 @@
 				value="jdbc:mysql://localhost:8889/jpa?serverTimezone=UTC" />
 
 
+
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
+
+			<property name="hibernate.cache.use_second_level_cache"
+				value="true" />
+			<property name="hibernate.cache.region.factory_class"
+				value="org.hibernate.cache.ehcache.EhCacheRegionFactory" />
+			<property name="hibernate.cache.use_query_cache"
+				value="true" />
 		</properties>
 
 	</persistence-unit>

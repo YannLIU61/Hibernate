@@ -1,5 +1,7 @@
 package com.yan.helloworld;
 
+import java.util.Date;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -24,6 +26,8 @@ public class Main {
 		customer.setAge(24);
 		customer.setEmail("yann.liu@outlook.fr");
 		customer.setLastName("LIU");
+		customer.setBirth(new Date());
+		customer.setCreatedDate(new Date());
 		
 		entityManager.persist(customer);
 		
